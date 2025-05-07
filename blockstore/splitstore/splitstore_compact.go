@@ -457,7 +457,7 @@ func (s *SplitStore) doTxnProtect(root cid.Cid, markSet MarkSet) (int64, error) 
 		return 0, err
 	}
 
-	// Note: cold objects are deleted heaviest first, so the consituents of an object
+	// Note: cold objects are deleted heaviest first, so the constituents of an object
 	// cannot be deleted before the object itself.
 	return s.walkObjectIncomplete(root, newTmpVisitor(),
 		func(c cid.Cid) error {
@@ -991,7 +991,7 @@ func (s *SplitStore) walkChain(ts *types.TipSet, inclState, inclMsgs abi.ChainEp
 			return hdr.UnmarshalCBOR(bytes.NewBuffer(data))
 		})
 		if err != nil {
-			return xerrors.Errorf("error unmarshaling block header (cid: %s): %w", c, err)
+			return xerrors.Errorf("error unmarshalling block header (cid: %s): %w", c, err)
 		}
 
 		// tipset CID references are retained
